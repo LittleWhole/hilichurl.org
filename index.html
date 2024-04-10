@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>hilichurl.org</title>
+    <script src="index.js"></script>
     <style>
         body {
             margin: 0;
@@ -11,7 +12,7 @@
             justify-content: center;
             background: #000;
             overflow: hidden;
-            font-family: Arial, sans-serif;
+            font-family: 'JetBrains Mono', sans-serif;
         }
 
         .background {
@@ -20,9 +21,11 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: url('your-image.jpg') no-repeat center center fixed;
+            background: radial-gradient(circle, rgb(96, 124, 216) 0%, rgb(138, 117, 218) 100%);
+            animation: gradient 5s ease-in-out infinite;
             filter: blur(10px);
             z-index: -1;
+            animation: breathe 5s infinite;
         }
 
         .glassy-bg {
@@ -33,7 +36,11 @@
             text-align: center;
             font-size: 3em;
             backdrop-filter: blur(5px);
-            animation: breathe 5s infinite;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes breathe {
