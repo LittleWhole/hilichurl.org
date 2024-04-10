@@ -21,7 +21,7 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: radial-gradient(circle, rgb(96, 124, 216) 0%, rgb(138, 117, 218) 100%);
+            background: radial-gradient(circle, rgb(76, 104, 196) 0%, rgb(118, 97, 198) 100%);
             animation: gradient 5s ease-in-out infinite;
             filter: blur(10px);
             z-index: -1;
@@ -36,11 +36,12 @@
             text-align: center;
             font-size: 3em;
             backdrop-filter: blur(5px);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 3px 10px 0 rgba(31, 38, 135, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 10px;
             position: relative;
             z-index: 1;
+            transform: perspective(600px) rotateX(5deg) rotateY(5deg);
         }
 
         @keyframes breathe {
@@ -52,6 +53,28 @@
 </head>
 <body>
     <div class="background"></div>
-    <div class="glassy-bg">hilichurl.org</div>
+    <div class="glassy-bg" id="typed-text"> </div>
+    <script>
+        const text = 'hilichurl.org';
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById('typed-text').innerText += text.charAt(index);
+                index++;
+                setTimeout(typeText, 300 - (Math.random() * 280)); // adjust the speed of typing here
+            }
+        }
+
+        window.onload = function(){ 
+            typeText(); 
+            //animate(); 
+            let deg = 0;
+            setInterval(function() {
+                document.querySelector('.glassy-bg').style.transform = `perspective(600px) rotateX(${Math.sin(deg * Math.PI / 180) * 360}deg) rotateY(5deg)`;
+                deg = (deg + 4) % 360;
+            }, 100);
+        };
+    </script>
 </body>
 </html>
